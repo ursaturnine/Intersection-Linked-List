@@ -1,104 +1,125 @@
-from graphs.possible_bipartition import possible_bipartition
+from linked_lists.intersection import *
 
 
-def test_example_1():
+def test_will_return_intersection_for_lists_of_same_length():
     # Arrange
-    dislikes = [ [],
-      [2, 3],
-      [1, 4],
-      [1],
-      [2]
-    ]
+    node_d = Node("D")
+    node_e = Node("E")
+    node_f = Node("F")
+
+    node_x = Node("X")
+    node_y = Node("Y")
+    node_z = Node("Z")
+
+    node_one = Node("1")
+    node_two = Node("2")
+    node_three = Node("3")
+    node_one.next = node_two
+    node_two.next = node_three
+
+    # List A: ["D", "E", "F", "1", "2", "3"]
+    node_d.next = node_e
+    node_e.next = node_f
+    node_f.next = node_one
+
+    # List B: ["X", "Y", "Z", "1", "2", "3"]
+    node_x.next = node_y
+    node_y.next = node_z
+    node_z.next = node_one
+
+    head_a = node_d
+    head_b = node_x
 
     # Act
-    answer = possible_bipartition(dislikes)
+    answer = intersection_node(head_a, head_b)
 
     # Assert
-    assert answer
+    assert answer == node_one
 
-def test_example_2():
+def test_will_return_intersection_with_lists_of_differing_lengths():
     # Arrange
-    dislikes =  [ [],
-      [2, 3],
-      [1, 3],
-      [1, 2]
-    ]
+    node_d = Node("D")
+    node_e = Node("E")
+    node_f = Node("F")
+
+    node_x = Node("X")
+
+    node_one = Node("1")
+    node_two = Node("2")
+    node_three = Node("3")
+    node_one.next = node_two
+    node_two.next = node_three
+
+    # List A: ["D", "E", "F", "1", "2", "3"]
+    node_d.next = node_e
+    node_e.next = node_f
+    node_f.next = node_one
+
+    # List B: ["X", "1", "2", "3"]
+    node_x.next = node_one
+
+    head_a = node_d
+    head_b = node_x
 
     # Act
-    answer = possible_bipartition(dislikes)
+    answer = intersection_node(head_a, head_b)
 
     # Assert
-    assert not answer
+    assert answer == node_one
 
-def test_example_r():
+def test_will_return_none_with_one_empty_list():
     # Arrange
-    dislikes = [ [],
-      [2, 5],
-      [1, 3],
-      [2, 4],
-      [3, 5],
-      [1, 4]
-    ]
+    node_d = Node("D")
+    node_e = Node("E")
+    node_f = Node("F")
+
+    # List A: ["D", "E", "F"]
+    node_d.next = node_e
+    node_e.next = node_f
+
+    # List B: [] <-- empty list
 
     # Act
-    answer = possible_bipartition(dislikes)
+    answer = intersection_node(node_d, None)
 
     # Assert
-    assert not answer
+    assert answer is None
 
-def test_will_return_true_for_a_graph_which_can_be_bipartitioned():
+def test_will_return_none_when_no_intersection():
     # Arrange
-    dislikes = [ [3, 6],
-      [2, 5],
-      [1, 3],
-      [0, 2],
-      [5],
-      [1, 4],
-      [0]
-    ]
+    node_d = Node("D")
+    node_e = Node("E")
+    node_f = Node("F")
+
+    node_x = Node("X")
+    node_y = Node("Y")
+    node_z = Node("Z")
+
+    # List A: ["D", "E", "F"]
+    node_d.next = node_e
+    node_e.next = node_f
+
+    # List B: ["X", "Y", "Z"]
+    node_x.next = node_y
+    node_y.next = node_z
+
+    head_a = node_d
+    head_b = node_x
 
     # Act
-    answer = possible_bipartition(dislikes)
+    answer = intersection_node(head_a, head_b)
 
     # Assert
-    assert answer
+    assert answer is None
 
-def test_will_return_false_for_graph_which_cannot_be_bipartitioned():
+def test_will_return_none_for_two_empty_lists():
     # Arrange
-    dislikes = [ [3, 6],
-      [2, 5],
-      [1, 3],
-      [0, 2, 4],
-      [3, 5],
-      [1, 4],
-      [0]
-    ]
+
+    # List A: [] <-- empty list
+    # List B: [] <-- empty list
 
     # Act
-    answer = possible_bipartition(dislikes)
+    answer = intersection_node(None, None)
 
     # Assert
-    assert not answer
-
-
-def test_will_return_true_for_empty_graph():
-    assert possible_bipartition([])
-  
-def test_will_return_false_for_another_graph_which_cannot_be_bipartitioned():
-    # Arrange
-    dislikes = [ [3, 6],
-      [2, 5],
-      [1, 3],
-      [0, 2, 4],
-      [3, 5],
-      [1, 4],
-      [0],
-      [8],
-      [7]
-    ]
-
-    # Act
-    answer = possible_bipartition(dislikes)
-
-    # Assert
-    assert not answer
+    assert answer is None
