@@ -1,5 +1,5 @@
 # Intersection-Linked-List
-Given the heads of two singly linked-lists `head_a` and `head_b`, return the value of the node at which the two lists intersect. If the two linked lists do not intersect, the function should return `None`.
+Given the heads of two singly linked-lists `head_a` and `head_b`, return the node at which the two lists intersect. If the two linked lists do not intersect, the function should return `None`.
 
 For example, the following two linked lists begin to intersect at 5.
 
@@ -14,7 +14,9 @@ The following two linked lists do _not_ intersect at all because while the node 
 
 `linked_list_b: 1 -> 2 -> 5 -> 4 -> 3` 
 
+Thereare no cycles anywhere in the linked list structures. 
 
+The linked lists must retain their original structure after the function returns. 
 
 ## Getting Started
 
