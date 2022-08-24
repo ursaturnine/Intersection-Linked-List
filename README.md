@@ -1,4 +1,4 @@
-# Intersection-Linked-List
+# Intersection of Linked Lists
 
 ## Exercise
 Given the heads of two singly linked-lists `head_a` and `head_b`, return the node at which the two lists intersect. If the two linked lists do not intersect, the function should return `None`.
