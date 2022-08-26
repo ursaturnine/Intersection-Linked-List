@@ -124,3 +124,31 @@ def test_will_return_none_for_two_empty_lists():
 
     # Assert
     assert answer is None
+
+
+def test_will_return_none_nodes_have_same_value_different_reference():
+    #Arrange
+    node_d1 = Node("D")
+    node_e1 = Node("E")
+    node_f1 = Node("F")
+
+    node_c1 = Node("C")
+    node_e2 = Node("E")
+    node_f2 = Node("F")
+
+    #List A: [d, e1, f1]
+    node_d1.next = node_e1
+    node_e1.next = node_f1
+
+    #List B: [c, e2, f2]
+    node_c1.next = node_e2
+    node_e2.next = node_f2
+
+    head_a = node_d1
+    head_b = node_c1
+
+    #Act
+    answer = intersection_node(head_a, head_b)
+
+    #Assert
+    assert answer is None
