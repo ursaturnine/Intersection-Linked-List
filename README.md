@@ -17,7 +17,6 @@ Assume any intersection includes the tails of each list. For example, the follow
 
 `linked_list_b: 1 -> 2 -> 5 -> 4 -> 3` 
 
-
 The linked lists must retain their original structure after the function returns. 
 
 ## Getting Started
